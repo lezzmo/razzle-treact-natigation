@@ -37,7 +37,7 @@ There seems to be quite some confusion about the legacy CLI. This template only 
 
 Further information can be found here: https://github.com/react-native-community/cli#about
 
-### `react-native@0.61.0` or higher
+### `react-native@0.62.0` or higher
 
 ```sh
 # Setup the template
