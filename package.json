@@ -1,8 +1,9 @@
 {
   "name": "@lezzmo/razzle-treact-natigation",
-  "version": "7.0.2+6.5.9",
+  "version": "7.1.0+6.6.4",
   "description": "Typescript React Native template with Server Side Rendering (SSR) using Razzle and routing with React Navigation.",
   "scripts": {
+    "test": "exit 0",
     "prepublishOnly": "npm --no-git-tag-version version $TRAVIS_TAG"
   },
   "files": [
@@ -23,7 +24,7 @@
     "template",
     "boilerplate"
   ],
-  "author": "Emin Khateeb <emin@emin.ch>",
+  "author": "Sinuhe Coronel <lesmo@lesmo.com.mx>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lezzmo/razzle-treact-natigation/issues"
