@@ -15,7 +15,8 @@ import App from './App';
 import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import { AppRegistry } from 'react-native';
-import { handleServerRequest } from '@react-navigation/web';
+
+import handleServerRequest from './serverRequest';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -25,23 +26,13 @@ server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
-    const { path, query } = req;
-
-    const { navigation, title, options } = handleServerRequest(
-      App.router,
-      path,
-      query
-    );
-
     // register the app
     AppRegistry.registerComponent('App', () => App);
 
     // prerender the app
-    const { element, getStyleElement } = AppRegistry.getApplication('App', {
-      initialProps: { navigation }
-    });
-    // first the element
-    const html = ReactDOMServer.renderToString(element);
+    const { element, getStyleElement } = AppRegistry.getApplication('App');
+    // handle the request and render the html
+    const html = ReactDOMServer.renderToString(handleServerRequest(req.url, element));
     // then the styles
     const css = ReactDOMServer.renderToStaticMarkup(getStyleElement());
 
